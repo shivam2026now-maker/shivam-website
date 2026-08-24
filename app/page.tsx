@@ -174,7 +174,7 @@ export default function Home() {
         className="relative min-h-[112vh] overflow-hidden bg-[#050816]"
       >
         <div
-          className="absolute inset-0 origin-center bg-cover bg-center"
+          className="absolute inset-0 origin-center bg-cover bg-[center_35%]"
           style={{
             ...heroImageStyle,
             backgroundImage:
@@ -430,28 +430,26 @@ export default function Home() {
       {/* JOURNAL */}
       <section className="border-t border-white/10 bg-[#070b1c]">
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-6 sm:py-32">
-          <div className="flex flex-col gap-8 rounded-3xl border border-white/10 bg-[#080d20] p-8 sm:p-10 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 sm:text-sm">
-                05 / Journal
-              </p>
+          <div
+            className="group cursor-pointer rounded-3xl border border-white/10 bg-[#080d20] p-8 transition hover:border-cyan-400/40 sm:p-10"
+            onClick={() => window.location.href="/journal"}
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 sm:text-sm">
+              05 / Journal
+            </p>
 
-              <h2 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
-                Learning in public.
-              </h2>
+            <h2 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
+              Learning in public.
+            </h2>
 
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-400">
-                A place for notes, experiments, observations and the progress
-                behind the work.
-              </p>
-            </div>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-400">
+              A place for notes, experiments, observations and the progress
+              behind the work.
+            </p>
 
-            <button
-              onClick={() => window.location.href="/journal"}
-              className="w-fit rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-400 hover:text-cyan-300"
-            >
+            <div className="mt-8 text-sm font-semibold text-cyan-400 transition group-hover:translate-x-1">
               Open Journal →
-            </button>
+            </div>
           </div>
         </div>
       </section>

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@sanity/vision": "latest",
-    "sanity": "latest"
+    "sanity": "latest",
+    "styled-components": "^6.5.3"
   }
 }

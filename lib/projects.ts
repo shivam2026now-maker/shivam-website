@@ -50,7 +50,7 @@ export async function getProjectItemsByCategory(categoryId: string) {
         excerpt,
         summary,
         description,
-        body,
+        "content": content,
         publishedAt,
         featured
       }
@@ -74,7 +74,7 @@ export async function getProjectItemBySlug(slug: string) {
         excerpt,
         summary,
         description,
-        body,
+        "content": content,
         publishedAt,
         featured,
         category->{
@@ -108,7 +108,7 @@ export async function getProjectItemByCategoryAndSlug(categorySlug: string, item
         excerpt,
         summary,
         description,
-        body,
+        "content": content,
         publishedAt,
         featured,
         category->{

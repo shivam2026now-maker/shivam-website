@@ -48,9 +48,9 @@ export default async function ProjectItemPage({ params }: Props) {
             </p>
           )}
 
-          {projectItem.body && (
+          {projectItem.content && (
             <div className="prose prose-invert mt-12 max-w-none">
-              <PortableText value={projectItem.body} />
+              <PortableText value={projectItem.content} />
             </div>
           )}
         </article>

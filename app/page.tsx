@@ -297,9 +297,9 @@ export default function Home() {
               </p>
             </div>
 
-            <button
-              onClick={() => window.location.href="/articles"}
-              className="group rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40 hover:bg-[#0b1229]"
+            <Link
+              href="/articles"
+              className="group block rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40 hover:bg-[#0b1229]"
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-500">Writing archive</span>
@@ -313,9 +313,9 @@ export default function Home() {
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                Publishing soon.
+                Essays, notes, and long-form thinking.
               </p>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -339,17 +339,17 @@ export default function Home() {
                 beyond it.
               </p>
 
-              <button
-                onClick={() => window.location.href="/research"}
-                className="mt-8 rounded-full border border-cyan-400/40 px-6 py-3 text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-slate-950"
+              <Link
+                href="/research"
+                className="mt-8 inline-block rounded-full border border-cyan-400/40 px-6 py-3 text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-slate-950"
               >
                 See the Research →
-              </button>
+              </Link>
             </div>
 
-            <button
-              onClick={() => window.location.href="/research"}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-[#080d20] text-left"
+            <Link
+              href="/research"
+              className="group block overflow-hidden rounded-3xl border border-white/10 bg-[#080d20] text-left"
             >
               <div
                 className="aspect-[4/3] bg-cover bg-center transition duration-700 group-hover:scale-105"
@@ -379,7 +379,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -404,9 +404,9 @@ export default function Home() {
               </p>
             </div>
 
-            <button
-              onClick={() => window.location.href="/projects"}
-              className="group rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40 hover:bg-[#0b1229]"
+            <Link
+              href="/projects"
+              className="group block rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40 hover:bg-[#0b1229]"
             >
               <div className="flex items-center gap-4">
                 <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_14px_rgba(34,211,238,0.8)]" />
@@ -422,7 +422,7 @@ export default function Home() {
               <p className="mt-3 text-sm leading-6 text-slate-500">
                 Open the current investigations →
               </p>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -430,9 +430,9 @@ export default function Home() {
       {/* JOURNAL */}
       <section className="border-t border-white/10 bg-[#070b1c]">
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-6 sm:py-32">
-          <div
-            className="group cursor-pointer rounded-3xl border border-white/10 bg-[#080d20] p-8 transition hover:border-cyan-400/40 sm:p-10"
-            onClick={() => window.location.href="/journal"}
+          <Link
+            href="/journal"
+            className="group block rounded-3xl border border-white/10 bg-[#080d20] p-8 transition hover:border-cyan-400/40 sm:p-10"
           >
             <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 sm:text-sm">
               05 / Journal
@@ -450,7 +450,7 @@ export default function Home() {
             <div className="mt-8 text-sm font-semibold text-cyan-400 transition group-hover:translate-x-1">
               Open Journal →
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -473,9 +473,9 @@ export default function Home() {
               </p>
             </div>
 
-            <button
-              onClick={() => window.location.href="/youtube"}
-              className="group rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40"
+            <Link
+              href="/media"
+              className="group block rounded-3xl border border-white/10 bg-[#080d20] p-8 text-left transition hover:border-cyan-400/40"
             >
               <p className="text-xs uppercase tracking-[0.28em] text-cyan-400">
                 Media Channel
@@ -486,13 +486,13 @@ export default function Home() {
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                YouTube uploads soon.
+                Visual explanations and project updates.
               </p>
 
               <div className="mt-8 text-cyan-400 transition group-hover:translate-x-1">
                 Open media →
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </section>

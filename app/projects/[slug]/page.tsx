@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProjectBySlug } from "@/lib/projects";
+import { getProjectCategoryBySlug, getProjectItemsByCategory } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 
@@ -8,13 +8,15 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export default async function ProjectPage({ params }: Props) {
+export default async function ProjectCategoryPage({ params }: Props) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const category = await getProjectCategoryBySlug(slug);
 
-  if (!project) {
+  if (!category) {
     notFound();
   }
+
+  const items = await getProjectItemsByCategory(category._id);
 
   return (
     <main className="min-h-screen bg-[#050816] text-white">
@@ -28,38 +30,54 @@ export default async function ProjectPage({ params }: Props) {
 
         <header className="mt-16">
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-            Project
+            Project Category
           </p>
 
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            {project.title || project.name}
+            {category.title}
           </h1>
 
-          {(project.excerpt || project.summary || project.description) && (
+          {category.description && (
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-              {project.excerpt || project.summary || project.description}
-            </p>
-          )}
-
-          {project.publishedAt && (
-            <p className="mt-6 text-sm text-slate-500">
-              {new Date(project.publishedAt).toLocaleDateString()}
+              {category.description}
             </p>
           )}
         </header>
 
-        <section className="mt-16 rounded-3xl border border-white/10 bg-white/[0.025] p-8">
-          <p className="text-sm uppercase tracking-[0.2em] text-cyan-400">
-            Project Details
-          </p>
+        <section className="mt-16 space-y-6">
+          {items.length === 0 ? (
+            <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-8 text-slate-400">
+              No published updates yet for this project.
+            </div>
+          ) : (
+            items.map((item: any) => (
+              <Link
+                key={item.slug}
+                href={`/projects/${category.slug}/${item.slug}`}
+                className="block rounded-3xl border border-white/10 bg-white/[0.025] p-8 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]"
+              >
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
+                  {item.publishedAt
+                    ? new Date(item.publishedAt).toLocaleDateString()
+                    : "Project update"}
+                </p>
 
-          <h2 className="mt-4 text-2xl font-semibold">
-            {project.title || project.name}
-          </h2>
+                <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
+                  {item.title}
+                </h2>
 
-          <p className="mt-4 leading-7 text-slate-400">
-            {project.description || project.summary || "Project details will appear here."}
-          </p>
+                {(item.excerpt || item.summary || item.description) && (
+                  <p className="mt-4 leading-7 text-slate-400">
+                    {item.excerpt || item.summary || item.description}
+                  </p>
+                )}
+
+                <div className="mt-6 text-sm font-semibold text-cyan-300">
+                  Read full details →
+                </div>
+              </Link>
+            ))
+          )}
         </section>
       </div>
     </main>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProjectCategoryBySlug, getProjectItemsByCategory } from "@/lib/projects";
+import { getProjectDomain, getProjects } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 
@@ -8,15 +8,16 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export default async function ProjectCategoryPage({ params }: Props) {
+export default async function ProjectDomainPage({ params }: Props) {
   const { slug } = await params;
-  const category = await getProjectCategoryBySlug(slug);
 
-  if (!category) {
+  const domain = getProjectDomain(slug);
+
+  if (!domain) {
     notFound();
   }
 
-  const items = await getProjectItemsByCategory(category._id);
+  const projects = await getProjects(slug);
 
   return (
     <main className="min-h-screen bg-[#050816] text-white">
@@ -25,60 +26,58 @@ export default async function ProjectCategoryPage({ params }: Props) {
           href="/projects"
           className="text-sm text-cyan-400 transition hover:text-cyan-300"
         >
-          ← Back to Projects
+          ? Back to Projects
         </Link>
 
-        <header className="mt-16">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-            Project Category
+        <div className="mt-20">
+          <p className="text-sm tracking-[0.35em] text-cyan-400">
+            PROJECT DOMAIN
           </p>
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            {category.title}
+          <h1 className="mt-5 text-5xl font-semibold tracking-tight sm:text-6xl">
+            {domain.title}
           </h1>
 
-          {category.description && (
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-              {category.description}
+          <p className="mt-6 max-w-2xl text-xl text-white/60">
+            {domain.description}
+          </p>
+        </div>
+
+        <div className="mt-16 space-y-5">
+          {projects.map((project: any) => (
+            <Link
+              key={project._id}
+              href={`/projects/${slug}/${project.slug}`}
+              className="group block rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-9"
+            >
+              <h2 className="text-2xl font-semibold">
+                {project.title}
+              </h2>
+
+              {project.description && (
+                <p className="mt-4 text-lg leading-8 text-white/60">
+                  {project.description}
+                </p>
+              )}
+
+              {project.status && (
+                <p className="mt-5 text-sm text-cyan-400">
+                  {project.status}
+                </p>
+              )}
+
+              <div className="mt-7 text-sm font-medium text-white/70 transition group-hover:text-cyan-400">
+                Open project ?
+              </div>
+            </Link>
+          ))}
+
+          {projects.length === 0 && (
+            <p className="text-white/50">
+              No projects have been published in this domain yet.
             </p>
           )}
-        </header>
-
-        <section className="mt-16 space-y-6">
-          {items.length === 0 ? (
-            <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-8 text-slate-400">
-              No published updates yet for this project.
-            </div>
-          ) : (
-            items.map((item: any) => (
-              <Link
-                key={item.slug}
-                href={`/projects/${category.slug}/${item.slug}`}
-                className="block rounded-3xl border border-white/10 bg-white/[0.025] p-8 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]"
-              >
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
-                  {item.publishedAt
-                    ? new Date(item.publishedAt).toLocaleDateString()
-                    : "Project update"}
-                </p>
-
-                <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
-                  {item.title}
-                </h2>
-
-                {(item.excerpt || item.summary || item.description) && (
-                  <p className="mt-4 leading-7 text-slate-400">
-                    {item.excerpt || item.summary || item.description}
-                  </p>
-                )}
-
-                <div className="mt-6 text-sm font-semibold text-cyan-300">
-                  Read full details →
-                </div>
-              </Link>
-            ))
-          )}
-        </section>
+        </div>
       </div>
     </main>
   );

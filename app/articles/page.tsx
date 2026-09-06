@@ -9,8 +9,7 @@ const ARTICLES_QUERY = `
     excerpt,
     author,
     publishedAt,
-    featured,
-    "pdfUrl": pdf.asset->url
+    featured
   }
 `
 
@@ -40,33 +39,37 @@ export default async function ArticlesPage() {
               key={article._id}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
             >
-              <h2 className="text-2xl font-medium">{article.title}</h2>
+              <h2 className="text-2xl font-medium">
+                {article.title}
+              </h2>
 
               {article.excerpt && (
-                <p className="mt-3 text-white/60">{article.excerpt}</p>
+                <p className="mt-3 text-white/60">
+                  {article.excerpt}
+                </p>
               )}
 
               <div className="mt-4 text-sm text-white/40">
                 {article.author}
                 {article.publishedAt &&
-                  ` ï¿½ ${new Date(article.publishedAt).toLocaleDateString()}`}
+                  ` · ${new Date(article.publishedAt).toLocaleDateString()}`}
               </div>
 
-              {article.pdfUrl && (
-                <a
-                  href={article.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {article.slug && (
+                <Link
+                  href={`/articles/${article.slug}`}
                   className="mt-6 inline-block rounded-full border border-white/20 px-5 py-2 text-sm hover:bg-white hover:text-black"
                 >
-                  Read Article ?
-                </a>
+                  Read ?
+                </Link>
               )}
             </article>
           ))}
 
           {articles.length === 0 && (
-            <p className="text-white/50">No articles published yet.</p>
+            <p className="text-white/50">
+              No articles published yet.
+            </p>
           )}
         </div>
       </div>

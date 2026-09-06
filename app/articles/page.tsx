@@ -7,72 +7,68 @@ const ARTICLES_QUERY = `
     title,
     "slug": slug.current,
     excerpt,
-    category,
+    author,
     publishedAt,
-    featured
+    featured,
+    "pdfUrl": pdf.asset->url
   }
 `
+
+export const dynamic = 'force-dynamic'
 
 export default async function ArticlesPage() {
   const articles = await client.fetch(ARTICLES_QUERY)
 
   return (
-    <main className="min-h-screen bg-[#050816] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-12 sm:px-8 sm:py-20">
-        <Link href="/" className="text-sm text-cyan-400">
-          ← Back home
+    <main className="min-h-screen bg-[#050816] text-white px-6 py-16">
+      <div className="mx-auto max-w-5xl">
+        <Link href="/" className="text-sm text-white/60 hover:text-white">
+          ? Back
         </Link>
 
-        <header className="mt-20">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-            Articles
-          </p>
+        <h1 className="mt-8 text-4xl font-semibold tracking-tight">
+          Articles
+        </h1>
 
-          <h1 className="mt-5 text-5xl font-semibold sm:text-7xl">
-            Ideas, questions & analysis.
-          </h1>
+        <p className="mt-3 max-w-2xl text-white/60">
+          Research, ideas, observations and long-form writing.
+        </p>
 
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-            A growing archive of structured writing supported by sources,
-            evidence and reasoning.
-          </p>
-        </header>
+        <div className="mt-12 space-y-5">
+          {articles.map((article: any) => (
+            <article
+              key={article._id}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+            >
+              <h2 className="text-2xl font-medium">{article.title}</h2>
 
-        <section className="mt-16 space-y-6">
-          {articles.length === 0 ? (
-            <div className="rounded-3xl border border-white/10 p-8 text-slate-400">
-              No published articles yet.
-            </div>
-          ) : (
-            articles.map((article: any) => (
-              <Link
-                key={article._id}
-                href={`/articles/${article.slug}`}
-                className="block rounded-3xl border border-white/10 p-8 transition hover:border-cyan-400/40"
-              >
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
-                  {article.category || 'Article'}
-                </p>
+              {article.excerpt && (
+                <p className="mt-3 text-white/60">{article.excerpt}</p>
+              )}
 
-                <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">
-                  {article.title}
-                </h2>
+              <div className="mt-4 text-sm text-white/40">
+                {article.author}
+                {article.publishedAt &&
+                  ` � ${new Date(article.publishedAt).toLocaleDateString()}`}
+              </div>
 
-                {article.excerpt && (
-                  <p className="mt-4 leading-7 text-slate-400">
-                    {article.excerpt}
-                  </p>
-                )}
+              {article.pdfUrl && (
+                <a
+                  href={article.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block rounded-full border border-white/20 px-5 py-2 text-sm hover:bg-white hover:text-black"
+                >
+                  Read Article ?
+                </a>
+              )}
+            </article>
+          ))}
 
-                {article.publishedAt && (
-                  <p className="mt-5 text-sm text-slate-500">
-                    {new Date(article.publishedAt).toLocaleDateString()}
-                  </p>
-                )}
-              </Link>
-            ))
+          {articles.length === 0 && (
+            <p className="text-white/50">No articles published yet.</p>
           )}
-        </section>
+        </div>
       </div>
     </main>
   )

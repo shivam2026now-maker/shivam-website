@@ -1,70 +1,65 @@
 import Link from "next/link";
-import { getProjects, PROJECT_DOMAINS } from "@/lib/projects";
+import { getProjectCategories } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 
 export default async function ProjectsPage() {
-  const projects = await getProjects();
-
-  const domains = PROJECT_DOMAINS.filter((domain) =>
-    projects.some((project: any) => project.domain === domain.value)
-  );
+  const categories = await getProjectCategories();
 
   return (
     <main className="min-h-screen bg-[#050816] px-6 py-10 text-white sm:px-8 sm:py-16">
       <div className="mx-auto max-w-6xl">
-        <Link
-          href="/"
-          className="text-sm text-cyan-400 transition hover:text-cyan-300"
-        >
-          ? Back home
+        <Link href="/" className="text-sm text-cyan-400">
+          ← Back home
         </Link>
 
-        <div className="mt-24">
-          <p className="text-sm tracking-[0.35em] text-cyan-400">
-            PROJECTS
+        <header className="mt-16">
+          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+            Projects
           </p>
 
-          <h1 className="mt-6 text-6xl font-semibold tracking-tight sm:text-7xl">
+          <h1 className="mt-4 text-5xl font-semibold tracking-tight sm:text-7xl">
             Projects
           </h1>
 
-          <p className="mt-8 text-xl text-white/60">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
             Explore each project area and its published updates.
           </p>
-        </div>
+        </header>
 
-        <div className="mt-24 grid gap-6">
-          {domains.map((domain, index) => (
-            <Link
-              key={domain.value}
-              href={`/projects/${domain.value}`}
-              className="group rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 transition hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-12"
-            >
-              <div className="text-lg text-cyan-400">
-                {String(index + 1).padStart(2, "0")}
-              </div>
+        <section className="mt-14 grid gap-5 sm:grid-cols-2">
+          {categories.length === 0 ? (
+            <div className="rounded-3xl border border-white/10 p-8 text-slate-400 sm:col-span-2">
+              No published project categories yet.
+            </div>
+          ) : (
+            categories.map((category: any, index: number) => (
+              <Link
+                key={category.slug}
+                href={`/projects/${category.slug}`}
+                className="group rounded-3xl border border-white/10 bg-white/[0.025] p-8 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]"
+              >
+                <span className="text-sm text-cyan-400">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-              <h2 className="mt-14 text-3xl font-semibold sm:text-4xl">
-                {domain.title}
-              </h2>
+                <h2 className="mt-8 text-2xl font-semibold">
+                  {category.title}
+                </h2>
 
-              <p className="mt-7 max-w-2xl text-xl text-white/60">
-                {domain.description}
-              </p>
+                {category.description ? (
+                  <p className="mt-4 leading-7 text-slate-400">
+                    {category.description}
+                  </p>
+                ) : null}
 
-              <div className="mt-12 text-lg font-medium text-white/70 transition group-hover:text-cyan-400">
-                Open project ?
-              </div>
-            </Link>
-          ))}
-
-          {domains.length === 0 && (
-            <p className="text-white/50">
-              No projects published yet.
-            </p>
+                <p className="mt-8 text-sm font-semibold text-slate-400 transition group-hover:text-cyan-300">
+                  Open project →
+                </p>
+              </Link>
+            ))
           )}
-        </div>
+        </section>
       </div>
     </main>
   );

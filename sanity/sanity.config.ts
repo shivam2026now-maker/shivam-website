@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {projectSchemaTypes} from './schemaTypes'
+import {articleSchemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'shivam-website-studio',
@@ -10,6 +10,6 @@ export default defineConfig({
   dataset: 'production',
   plugins: [structureTool(), visionTool()],
   schema: {
-    types: projectSchemaTypes,
+    types: articleSchemaTypes,
   },
 })

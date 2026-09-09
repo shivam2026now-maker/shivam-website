@@ -1,4 +1,4 @@
-﻿import {defineConfig} from 'sanity'
+import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {articleSchemaTypes} from './schemaTypes'
@@ -13,4 +13,3 @@ export default defineConfig({
     types: articleSchemaTypes,
   },
 })
-

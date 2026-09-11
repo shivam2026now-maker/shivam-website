@@ -1,3 +1,5 @@
+﻿export const revalidate = 60
+
 import Link from "next/link"
 import {client} from "@/lib/sanity"
 import {urlFor} from "@/lib/sanityImage"
@@ -62,7 +64,7 @@ export default async function HomePage(){
             <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
               Curiosity
               <br />
-              <span className="text-cyan-300">→ Investigation → Building</span>
+              <span className="text-cyan-300">â†’ Investigation â†’ Building</span>
             </h1>
 
             <p className="mt-8 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
@@ -111,7 +113,7 @@ export default async function HomePage(){
             </div>
 
             <Link href="/about" className="mt-9 inline-flex rounded-full border border-cyan-400/30 px-6 py-3 text-sm font-medium text-cyan-300 transition hover:bg-cyan-400/10">
-              More about me →
+              More about me â†’
             </Link>
           </div>
         </div>
@@ -173,7 +175,7 @@ export default async function HomePage(){
 
           <div className="mt-12">
             <Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">
-              Back to top ↑
+              Back to top â†‘
             </Link>
           </div>
         </div>
@@ -192,7 +194,7 @@ export default async function HomePage(){
 <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:px-8 md:flex-row md:items-center md:justify-between">
           <span>Shivam.</span>
-          <span>© {new Date().getFullYear()} Shivam Chandravanshi</span>
+          <span>Â© {new Date().getFullYear()} Shivam Chandravanshi</span>
         </div>
       </footer>
     </main>

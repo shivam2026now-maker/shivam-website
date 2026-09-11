@@ -1,4 +1,4 @@
-﻿import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import imageUrlBuilder from '@sanity/image-url'
@@ -306,12 +306,12 @@ export default async function ArticlePage({
 
             {article.author && (
               <>
-                <span aria-hidden="true">â€¢</span>
+                <span aria-hidden="true"></span>
                 <span>{article.author}</span>
               </>
             )}
 
-            <span aria-hidden="true">â€¢</span>
+            <span aria-hidden="true"></span>
 
             <span>{readingTime} min read</span>
           </div>

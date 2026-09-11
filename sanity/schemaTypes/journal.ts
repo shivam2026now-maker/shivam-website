@@ -1,4 +1,4 @@
-﻿import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 const journalRichText = {
   type: 'array',
@@ -154,7 +154,7 @@ export default defineType({
     }: {
       title?: string
       subtitle?: string
-      media?: unknown
+      media?: any
     }) {
       return {
         title: title || 'Untitled Journal',

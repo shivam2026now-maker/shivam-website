@@ -1,29 +1,29 @@
-import Link from 'next/link'
-import { client } from '@/lib/sanity'
-import imageUrlBuilder from '@sanity/image-url'
+import Link from "next/link";
+import { client } from "@/lib/sanity";
+import imageUrlBuilder from "@sanity/image-url";
 
-const builder = imageUrlBuilder(client)
+const builder = imageUrlBuilder(client);
 
 function urlFor(source: any) {
-  return builder.image(source)
+  return builder.image(source);
 }
 
 type Article = {
-  _id: string
-  title: string
+  _id: string;
+  title: string;
   slug: {
-    current: string
-  }
-  excerpt?: string
+    current: string;
+  };
+  excerpt?: string;
   coverImage?: {
     asset?: {
-      _ref: string
-    }
-    alt?: string
-  }
-  author?: string
-  publishedAt?: string
-}
+      _ref: string;
+    };
+    alt?: string;
+  };
+  author?: string;
+  publishedAt?: string;
+};
 
 async function getArticles(): Promise<Article[]> {
   return client.fetch(
@@ -46,27 +46,34 @@ async function getArticles(): Promise<Article[]> {
         revalidate: 60,
       },
     },
-  )
+  );
 }
 
 function formatDate(date?: string) {
-  if (!date) return ''
+  if (!date) return "";
 
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(new Date(date))
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(date));
 }
 
 export default async function ArticlesPage() {
-  const articles = await getArticles()
+  const articles = await getArticles();
 
   return (
     <main className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <header className="mb-16 max-w-3xl">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] opacity-60">
+        <Link
+          href="/"
+          className="inline-flex items-center text-sm text-cyan-400 transition hover:text-cyan-200"
+        >
+Back home
+        </Link>
+
+        <header className="mb-16 mt-14 max-w-3xl">
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-cyan-400">
             Articles
           </p>
 
@@ -81,7 +88,7 @@ export default async function ArticlesPage() {
         </header>
 
         {articles.length === 0 ? (
-          <div className="rounded-2xl border p-8">
+          <div className="rounded-2xl border border-white/10 p-8">
             <p className="text-lg font-medium">No published articles yet.</p>
             <p className="mt-2 opacity-60">
               Publish an article from Sanity Studio and it will appear here.
@@ -96,16 +103,16 @@ export default async function ArticlesPage() {
                 className="group block"
               >
                 {article.coverImage?.asset && (
-                  <div className="mb-6 overflow-hidden rounded-2xl">
+                  <div className="mb-6 overflow-hidden rounded-2xl border border-white/10">
                     <img
                       src={urlFor(article.coverImage)
                         .width(1400)
                         .height(800)
-                        .fit('crop')
-                        .auto('format')
+                        .fit("crop")
+                        .auto("format")
                         .url()}
                       alt={article.coverImage.alt || article.title}
-                      className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                     />
                   </div>
                 )}
@@ -119,13 +126,13 @@ export default async function ArticlesPage() {
 
                   {article.author && (
                     <>
-                      <span aria-hidden="true">•</span>
+                      <span aria-hidden="true"></span>
                       <span>{article.author}</span>
                     </>
                   )}
                 </div>
 
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight transition-opacity group-hover:opacity-70">
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight transition-colors group-hover:text-cyan-300">
                   {article.title}
                 </h2>
 
@@ -135,14 +142,13 @@ export default async function ArticlesPage() {
                   </p>
                 )}
 
-                <span className="mt-5 inline-block text-sm font-medium underline underline-offset-4">
-                  Read article →
-                </span>
+                <span className="mt-5 inline-block text-sm font-medium text-slate-400 underline underline-offset-4 transition-colors group-hover:text-cyan-300">
+                  Read article</span>
               </Link>
             ))}
           </div>
         )}
       </div>
     </main>
-  )
+  );
 }

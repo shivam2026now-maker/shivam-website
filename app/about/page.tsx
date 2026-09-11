@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="mt-16 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <img
-              src="/images/about.jpg"
+              src="/images/hero.jpg"
               alt="Shivam Chandravanshi"
               className="w-full rounded-3xl border border-white/10 object-cover"
             />
@@ -67,3 +67,4 @@ export default function AboutPage() {
     </main>
   );
 }
+

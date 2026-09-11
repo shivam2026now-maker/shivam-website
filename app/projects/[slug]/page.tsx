@@ -1,85 +1,55 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getProjectCategoryBySlug, getProjectItemsByCategory } from "@/lib/projects";
+import Link from "next/link"
+import {notFound} from "next/navigation"
+import {client} from "@/lib/sanity"
+import {urlFor} from "@/lib/sanityImage"
+import ProjectSectionViewer from "../ProjectSectionViewer"
 
-export const dynamic = "force-dynamic";
+const query=`*[_type=="project" && slug.current==$slug][0]{
+  _id,title,slug,shortDescription,coverImage,publishedAt,status,
+  sections[]{_key,title,content}
+}`
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+export default async function ProjectPage({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params
+  const project=await client.fetch(query,{slug})
 
-export default async function ProjectCategoryPage({ params }: Props) {
-  const { slug } = await params;
-  const category = await getProjectCategoryBySlug(slug);
+  if(!project) notFound()
 
-  if (!category) {
-    notFound();
-  }
+  const image=project.coverImage
+    ? urlFor(project.coverImage).width(1800).height(1000).quality(90).url()
+    : null
 
-  const items = await getProjectItemsByCategory(category._id);
+  const sections=(project.sections||[]).map((section:any)=>({
+    _key:section._key,
+    title:section.title,
+    content:section.content
+  }))
 
   return (
     <main className="min-h-screen bg-[#050816] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-12 sm:px-8 sm:py-20">
-        <Link
-          href="/projects"
-          className="text-sm text-cyan-400 transition hover:text-cyan-300"
-        >
-          ← Back to Projects
+      <section className="mx-auto max-w-7xl px-6 pb-20 pt-28">
+        <Link href="/projects" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">
+          ← Projects
         </Link>
 
-        <header className="mt-16">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-            Project Category
-          </p>
-
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
-            {category.title}
-          </h1>
-
-          {category.description && (
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-              {category.description}
-            </p>
+        <div className="mt-10 max-w-4xl">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Project</p>
+          <h1 className="mt-4 text-5xl font-semibold tracking-tight md:text-7xl">{project.title}</h1>
+          {project.shortDescription && (
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400">{project.shortDescription}</p>
           )}
-        </header>
+        </div>
 
-        <section className="mt-16 space-y-6">
-          {items.length === 0 ? (
-            <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-8 text-slate-400">
-              No published updates yet for this project.
-            </div>
-          ) : (
-            items.map((item: any) => (
-              <Link
-                key={item.slug}
-                href={`/projects/${category.slug}/${item.slug}`}
-                className="block rounded-3xl border border-white/10 bg-white/[0.025] p-8 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]"
-              >
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
-                  {item.publishedAt
-                    ? new Date(item.publishedAt).toLocaleDateString()
-                    : "Project update"}
-                </p>
+        {image && (
+          <div className="image-depth mt-12 overflow-hidden rounded-3xl border border-white/10">
+            <img src={image} alt={project.title} className="h-auto w-full object-cover" />
+          </div>
+        )}
 
-                <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
-                  {item.title}
-                </h2>
-
-                {(item.excerpt || item.summary || item.description) && (
-                  <p className="mt-4 leading-7 text-slate-400">
-                    {item.excerpt || item.summary || item.description}
-                  </p>
-                )}
-
-                <div className="mt-6 text-sm font-semibold text-cyan-300">
-                  Read full details →
-                </div>
-              </Link>
-            ))
-          )}
-        </section>
-      </div>
+        <div className="mt-16">
+          <ProjectSectionViewer sections={sections} />
+        </div>
+      </section>
     </main>
-  );
+  )
 }

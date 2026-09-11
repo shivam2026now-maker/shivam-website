@@ -1,85 +1,14 @@
-import Link from "next/link";
+import Link from "next/link"
+import {client} from "@/lib/sanity"
+import {urlFor} from "@/lib/sanityImage"
 
-const domains = [
-  {
-    number: "01",
-    title: "Physics & Engineering",
-    slug: "physics-engineering",
-  },
-  {
-    number: "02",
-    title: "Space",
-    slug: "space",
-  },
-  {
-    number: "03",
-    title: "Geopolitics",
-    slug: "geopolitics",
-  },
-  {
-    number: "04",
-    title: "Tech & Innovation",
-    slug: "tech-innovation",
-  },
-];
+const query=`*[_type=="research" && defined(slug.current)]|order(coalesce(publishedAt,_createdAt) desc){_id,title,"slug":slug.current,shortDescription,coverImage,publishedAt,status,featured}`
 
-export default function ResearchPage() {
-  return (
-    <main className="min-h-screen bg-[#050816] text-white">
-      <div className="mx-auto max-w-6xl px-6 py-10 sm:px-8 sm:py-16">
-
-        <Link
-          href="/"
-          className="text-sm text-cyan-400 transition hover:text-cyan-300"
-        >
-          ← Back home
-        </Link>
-
-        <section className="mt-10 overflow-hidden rounded-3xl border border-white/10">
-          <img
-            src="/researchspace.jpg"
-            alt="Research and space"
-            className="h-[280px] w-full object-cover sm:h-[420px]"
-          />
-
-          <div className="bg-white/[0.025] p-7 sm:p-10">
-            <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-              Research
-            </p>
-
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">
-              Research Domains
-            </h1>
-
-            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-400">
-              Explore the areas I am researching and investigating.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-10 grid gap-4 sm:grid-cols-2">
-          {domains.map((domain) => (
-            <Link
-              key={domain.slug}
-              href={`/research/${domain.slug}`}
-              className="group rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]"
-            >
-              <span className="text-sm text-cyan-400">
-                {domain.number}
-              </span>
-
-              <h2 className="mt-8 text-2xl font-semibold">
-                {domain.title}
-              </h2>
-
-              <div className="mt-8 text-sm font-semibold text-slate-400 transition group-hover:text-cyan-300">
-                Open domain →
-              </div>
-            </Link>
-          ))}
-        </section>
-
-      </div>
-    </main>
-  );
+export default async function ResearchPage(){
+ const items=await client.fetch(query)
+ return <main className="min-h-screen bg-[#050816] text-white"><section className="mx-auto max-w-7xl px-6 pb-24 pt-28">
+  <div className="mb-16 max-w-3xl"><p className="mb-4 text-xs uppercase tracking-[0.35em] text-cyan-300">02 / Research</p><h1 className="text-5xl font-semibold tracking-tight md:text-7xl">Questions worth investigating.</h1><p className="mt-6 text-base leading-8 text-slate-400 md:text-lg">Research notes, investigations and ideas explored through physics, technology and interdisciplinary thinking.</p></div>
+  {items.length===0?<div className="glass-surface rounded-3xl p-10 text-slate-400">No research published yet.</div>:<div className="grid gap-8 md:grid-cols-2">{items.map((item:any,i:number)=>{const image=item.coverImage?urlFor(item.coverImage).width(1400).height(900).quality(85).url():null;return <Link key={item._id} href={`/research/${item.slug}`} className="premium-card image-depth shine group rounded-3xl"><div className="relative aspect-[16/10] overflow-hidden bg-slate-950">{image?<img src={image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/>:<div className="section-grid h-full w-full"/>}<div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent"/><div className="absolute left-6 top-6 text-xs uppercase tracking-[0.25em] text-slate-400">Research {String(i+1).padStart(2,"0")}</div>{item.status&&<div className="absolute right-6 top-6 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-300">{item.status}</div>}</div><div className="p-7 md:p-8"><h2 className="text-2xl font-semibold tracking-tight transition group-hover:text-cyan-200 md:text-3xl">{item.title}</h2>{item.shortDescription&&<p className="mt-4 line-clamp-3 text-sm leading-7 text-slate-400">{item.shortDescription}</p>}<div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5"><span className="text-xs uppercase tracking-[0.25em] text-slate-500 transition group-hover:text-cyan-300">Explore research</span><span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">↗</span></div></div></Link>})}</div>}
+  <div className="mt-16 border-t border-white/10 pt-8"><Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 hover:text-cyan-300">Back to top ↑</Link></div>
+ </section></main>
 }

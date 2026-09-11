@@ -1,31 +1,23 @@
-﻿import {StructureBuilder} from 'sanity/structure'
+import {StructureBuilder} from 'sanity/structure'
 
-export const structure = (S: StructureBuilder) =>
-  S.list()
+export const structure = (S: StructureBuilder) => {
+  const newProjectId = `new-project-${Date.now()}`
+  const newResearchId = `new-research-${Date.now()}`
+
+  return S.list()
     .title('Shivam Website')
     .items([
-      // --------------------------------------------
-      // ARTICLES
-      // --------------------------------------------
-
       S.listItem()
         .title('Articles')
         .child(
           S.documentTypeList('article')
             .title('Articles')
             .defaultOrdering([
-              {
-                field: 'publishedAt',
-                direction: 'desc',
-              },
+              {field: 'publishedAt', direction: 'desc'},
             ]),
         ),
 
       S.divider(),
-
-      // --------------------------------------------
-      // PROJECTS
-      // --------------------------------------------
 
       S.listItem()
         .title('Projects')
@@ -34,33 +26,26 @@ export const structure = (S: StructureBuilder) =>
             .title('Projects')
             .items([
               S.listItem()
-                .title('➕ New Project')
+                .title('New Project')
                 .child(
                   S.document()
                     .schemaType('project')
-                    .documentId('new-project'),
+                    .documentId(newProjectId),
                 ),
 
               S.divider(),
 
               S.listItem()
-                .title('📁 Existing Projects')
+                .title('Existing Projects')
                 .child(
                   S.documentTypeList('project')
                     .title('Existing Projects')
                     .defaultOrdering([
-                      {
-                        field: 'publishedAt',
-                        direction: 'desc',
-                      },
+                      {field: 'publishedAt', direction: 'desc'},
                     ]),
                 ),
             ]),
         ),
-
-      // --------------------------------------------
-      // RESEARCH
-      // --------------------------------------------
 
       S.listItem()
         .title('Research')
@@ -69,25 +54,22 @@ export const structure = (S: StructureBuilder) =>
             .title('Research')
             .items([
               S.listItem()
-                .title('➕ New Research')
+                .title('New Research')
                 .child(
                   S.document()
                     .schemaType('research')
-                    .documentId('new-research'),
+                    .documentId(newResearchId),
                 ),
 
               S.divider(),
 
               S.listItem()
-                .title('📚 Existing Research')
+                .title('Existing Research')
                 .child(
                   S.documentTypeList('research')
                     .title('Existing Research')
                     .defaultOrdering([
-                      {
-                        field: 'publishedAt',
-                        direction: 'desc',
-                      },
+                      {field: 'publishedAt', direction: 'desc'},
                     ]),
                 ),
             ]),
@@ -95,26 +77,15 @@ export const structure = (S: StructureBuilder) =>
 
       S.divider(),
 
-      // --------------------------------------------
-      // JOURNAL
-      // --------------------------------------------
-
       S.listItem()
         .title('Journal')
         .child(
           S.documentTypeList('journal')
             .title('Journal')
             .defaultOrdering([
-              {
-                field: 'publishedAt',
-                direction: 'desc',
-              },
+              {field: 'publishedAt', direction: 'desc'},
             ]),
         ),
-
-      // --------------------------------------------
-      // MEDIA
-      // --------------------------------------------
 
       S.listItem()
         .title('Media')
@@ -122,10 +93,8 @@ export const structure = (S: StructureBuilder) =>
           S.documentTypeList('media')
             .title('Media')
             .defaultOrdering([
-              {
-                field: 'publishedAt',
-                direction: 'desc',
-              },
+              {field: 'publishedAt', direction: 'desc'},
             ]),
         ),
     ])
+}

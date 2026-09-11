@@ -214,7 +214,7 @@ export default defineType({
     }: {
       title?: string
       subtitle?: string
-      media?: any
+      media?: unknown
     }) {
       return {
         title: title || 'Untitled Research',

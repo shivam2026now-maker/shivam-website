@@ -1,4 +1,4 @@
-﻿import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'media',
@@ -102,7 +102,7 @@ export default defineType({
     }: {
       title?: string
       subtitle?: string
-      media?: unknown
+      media?: any
     }) {
       return {
         title: title || 'Untitled Media',

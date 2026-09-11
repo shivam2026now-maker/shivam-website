@@ -65,14 +65,14 @@ const richText = {
 }
 
 export default defineType({
-  name: 'research',
-  title: 'Research',
+  name: 'project',
+  title: 'Project',
   type: 'document',
 
   fields: [
     defineField({
       name: 'title',
-      title: 'Research Title',
+      title: 'Project Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -127,7 +127,6 @@ export default defineType({
         list: [
           {title: 'Idea', value: 'idea'},
           {title: 'In Progress', value: 'in-progress'},
-          {title: 'Published', value: 'published'},
           {title: 'Completed', value: 'completed'},
         ],
         layout: 'radio',
@@ -146,12 +145,12 @@ export default defineType({
       name: 'sections',
       title: 'Table of Contents / Sections',
       description:
-        'Each section belongs to this Research document. Add Introduction, Methodology, Literature Review, Findings, Analysis, or any other section.',
+        'Each section belongs to this Project. Add Introduction, Design, Methodology, Results, Analysis, or any other section.',
       type: 'array',
       of: [
         {
-          name: 'researchSection',
-          title: 'Research Section',
+          name: 'projectSection',
+          title: 'Project Section',
           type: 'object',
 
           fields: [
@@ -214,11 +213,11 @@ export default defineType({
     }: {
       title?: string
       subtitle?: string
-      media?: any
+      media?: unknown
     }) {
       return {
-        title: title || 'Untitled Research',
-        subtitle: subtitle || 'Research',
+        title: title || 'Untitled Project',
+        subtitle: subtitle || 'Project',
         media,
       }
     },

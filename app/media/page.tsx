@@ -1,25 +1,10 @@
-export default function MediaPage() {
-  return (
-    <main className="min-h-screen bg-[#050816] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-12 sm:px-8 sm:py-20">
-        <a href="/" className="text-sm text-cyan-400">← Back home</a>
-        <header className="mt-20">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
-            YouTube & Media
-          </p>
-          <h1 className="mt-5 text-5xl font-semibold sm:text-7xl">
-            Building in public.
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-            Videos, sketches, explanations and projects shared through visual
-            media.
-          </p>
-        </header>
+import Link from "next/link"
+import {client} from "@/lib/sanity"
+import {urlFor} from "@/lib/sanityImage"
 
-        <div className="mt-16 rounded-3xl border border-white/10 p-8 text-slate-400">
-          YouTube videos and media will appear here.
-        </div>
-      </div>
-    </main>
-  );
+const query=`*[_type=="media"]|order(coalesce(publishedAt,_createdAt) desc){_id,title,thumbnail,description,publishedAt,url}`
+
+export default async function MediaPage(){
+ const items=await client.fetch(query)
+ return <main className="min-h-screen bg-[#050816] text-white"><section className="mx-auto max-w-7xl px-6 pb-24 pt-28"><div className="mb-16 max-w-3xl"><p className="mb-4 text-xs uppercase tracking-[0.35em] text-cyan-300">05 / Media</p><h1 className="text-5xl font-semibold tracking-tight md:text-7xl">Visual fragments.</h1><p className="mt-6 text-base leading-8 text-slate-400 md:text-lg">Images, videos and visual records from the journey of exploring, building and learning.</p></div>{items.length===0?<div className="glass-surface rounded-3xl p-10 text-slate-400">No media published yet.</div>:<div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">{items.map((item:any)=>{const image=item.thumbnail?urlFor(item.thumbnail).width(1200).height(800).quality(85).url():null;const href=item.url||"#";return <a key={item._id} href={href} target={item.url?"_blank":undefined} rel={item.url?"noreferrer":undefined} className="premium-card image-depth shine group overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-950">{image?<img src={image} alt={item.title||"Media"} className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/>:<div className="section-grid h-full w-full"/>}</div><div className="p-6"><h2 className="text-xl font-semibold transition group-hover:text-cyan-200">{item.title}</h2>{item.description&&<p className="mt-3 text-sm leading-6 text-slate-400">{item.description}</p>}<div className="mt-5 text-xs uppercase tracking-[0.25em] text-cyan-300">View ↗</div></div></a>})}</div>}<div className="mt-16 border-t border-white/10 pt-8"><Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 hover:text-cyan-300">Back to top ↑</Link></div></section></main>
 }

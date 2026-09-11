@@ -3,7 +3,7 @@
 The CLI for the open agent skills ecosystem.
 
 <!-- agent-list:start -->
-Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [73 more](#supported-agents).
+Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [75 more](#supported-agents).
 <!-- agent-list:end -->
 
 [![skills.sh](https://skills.sh/b/vercel-labs/skills)](https://skills.sh/vercel-labs/skills)
@@ -279,7 +279,7 @@ Skills can be installed to any of these agents:
 | IBM Bob | `bob` | `.bob/skills/` | `~/.bob/skills/` |
 | Claude Code | `claude-code` | `.claude/skills/` | `~/.claude/skills/` |
 | OpenClaw | `openclaw` | `skills/` | `~/.openclaw/skills/` |
-| Cline, Dexto, Kimi Code CLI, Loaf, Warp, Zed | `cline`, `dexto`, `kimi-code-cli`, `loaf`, `warp`, `zed` | `.agents/skills/` | `~/.agents/skills/` |
+| Cline, Dexto, Kimi Code CLI, Loaf, Sarvam Code, Warp, Zed | `cline`, `dexto`, `kimi-code-cli`, `loaf`, `sarvam-code`, `warp`, `zed` | `.agents/skills/` | `~/.agents/skills/` |
 | CodeArts Agent | `codearts-agent` | `.codeartsdoer/skills/` | `~/.codeartsdoer/skills/` |
 | CodeBuddy | `codebuddy` | `.codebuddy/skills/` | `~/.codebuddy/skills/` |
 | Codemaker | `codemaker` | `.codemaker/skills/` | `~/.codemaker/skills/` |
@@ -292,10 +292,11 @@ Skills can be installed to any of these agents:
 | Cursor | `cursor` | `.agents/skills/` | `~/.cursor/skills/` |
 | Deep Agents | `deepagents` | `.agents/skills/` | `~/.deepagents/agent/skills/` |
 | Devin for Terminal | `devin` | `.devin/skills/` | `~/.config/devin/skills/` |
-| Droid | `droid` | `.factory/skills/` | `~/.factory/skills/` |
+| Droid | `droid` | `.agents/skills/` | `~/.factory/skills/` |
 | Eve | `eve` | `agent/skills/` | N/A (project-only) |
 | Firebender | `firebender` | `.agents/skills/` | `~/.firebender/skills/` |
 | ForgeCode | `forgecode` | `.forge/skills/` | `~/.forge/skills/` |
+| fx | `fx` | `.fx/skills/` | `~/.fx/skills/` |
 | Gemini CLI | `gemini-cli` | `.agents/skills/` | `~/.gemini/skills/` |
 | GitHub Copilot | `github-copilot` | `.agents/skills/` | `~/.copilot/skills/` |
 | Goose | `goose` | `.goose/skills/` | `~/.config/goose/skills/` |
@@ -305,7 +306,7 @@ Skills can be installed to any of these agents:
 | Jazz | `jazz` | `.jazz/skills/` | `~/.jazz/skills/` |
 | Junie | `junie` | `.junie/skills/` | `~/.junie/skills/` |
 | iFlow CLI | `iflow-cli` | `.iflow/skills/` | `~/.iflow/skills/` |
-| Kilo Code | `kilo` | `.kilocode/skills/` | `~/.kilocode/skills/` |
+| Kilo Code | `kilo` | `.agents/skills/` | `~/.kilo/skills/` |
 | Kimchi | `kimchi` | `.kimchi/skills/` | `~/.config/kimchi/harness/skills/` |
 | Kiro CLI | `kiro-cli` | `.kiro/skills/` | `~/.kiro/skills/` |
 | Kode | `kode` | `.kode/skills/` | `~/.kode/skills/` |
@@ -430,9 +431,9 @@ discover `SKILL.md` files outside these container directories (e.g. under
 - `.cortex/skills/`
 - `.crush/skills/`
 - `.devin/skills/`
-- `.factory/skills/`
 - `agent/skills/`
 - `.forge/skills/`
+- `.fx/skills/`
 - `.goose/skills/`
 - `.grok/skills/`
 - `.hermes/skills/`
@@ -440,7 +441,6 @@ discover `SKILL.md` files outside these container directories (e.g. under
 - `.jazz/skills/`
 - `.junie/skills/`
 - `.iflow/skills/`
-- `.kilocode/skills/`
 - `.kimchi/skills/`
 - `.kiro/skills/`
 - `.kode/skills/`

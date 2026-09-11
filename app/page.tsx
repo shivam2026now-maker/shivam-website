@@ -100,13 +100,13 @@ export default async function HomePage(){
 
             <div className="mt-8 space-y-6 text-lg leading-8 text-slate-300">
               <p>
-                Fascinated by the sky, drawn to the unseen, and rarely satisfied with simply accepting things as they are—I have always been curious about the why and how behind what we experience.
+                Fascinated by the sky, drawn to the unseen, and rarely satisfied with simply accepting things as they are&mdash;I have always been curious about the why and how behind what we experience.
               </p>
               <p>
-                Hello, I&apos;m Shivam Chandravanshi—an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems down, learning across fields, and turning curiosity into things I can build, test, and understand.
+                Hello, I&apos;m Shivam Chandravanshi&mdash;an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems down, learning across fields, and turning curiosity into things I can build, test, and understand.
               </p>
               <p>
-                This website is a collection of that journey—my projects, experiments, articles, ideas, and the questions I&apos;m currently exploring.
+                This website is a collection of that journey&mdash;my projects, experiments, articles, ideas, and the questions I&apos;m currently exploring.
               </p>
             </div>
 
@@ -163,7 +163,7 @@ export default async function HomePage(){
                       <span className="text-xs uppercase tracking-[0.2em] text-slate-500">
                         {item?.title ? `Latest: ${item.title}` : "Explore"}
                       </span>
-                      <span className="section-arrow text-xl text-cyan-300">↗</span>
+                      <span className="section-arrow text-xl text-cyan-300">&#8599;</span>
                     </div>
                   </div>
                 </Link>
@@ -179,7 +179,17 @@ export default async function HomePage(){
         </div>
       </section>
 
-      <footer className="border-t border-white/10">
+              <section id="contact" className="border-t border-white/10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 sm:px-8 md:flex-row md:items-center md:justify-between">
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-slate-400">Get in touch</p>
+            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
+              <a href="mailto:shivam2026now@gmail.com" className="transition hover:text-cyan-300">Email</a>
+              <a href="https://www.linkedin.com/in/shivam-chandravanshi-98147a255" target="_blank" rel="noreferrer" className="transition hover:text-cyan-300"><span className="font-bold">in</span> LinkedIn</a>
+              <a href="https://whatsapp.com/channel/0029VbDNiUCJpe8eixQQqm3q" target="_blank" rel="noreferrer" className="transition hover:text-cyan-300">WhatsApp</a>
+            </div>
+          </div>
+        </section>
+<footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:px-8 md:flex-row md:items-center md:justify-between">
           <span>Shivam.</span>
           <span>© {new Date().getFullYear()} Shivam Chandravanshi</span>

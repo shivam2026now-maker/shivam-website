@@ -2,7 +2,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#050816] text-white">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-8 sm:py-20">
-        <a href="/" className="text-sm text-cyan-400">← Back home</a>
+        <a href="/" className="text-sm text-cyan-400">&#8592; Back</a>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
@@ -33,7 +33,7 @@ export default function AboutPage() {
               </p>
 
               <p>
-                I like following questions beyond their first answer—breaking
+                I like following questions beyond their first answer&mdash;
                 complex ideas apart, understanding the physics behind them,
                 researching evidence and turning ideas into things I can
                 investigate or build.
@@ -57,10 +57,10 @@ export default function AboutPage() {
             Let&apos;s explore an idea.
           </h2>
           <a
-            href="mailto:hello@shivamchandravanshi.com"
+            href="mailto:shivam2026now@gmail.com"
             className="mt-8 inline-block rounded-full bg-cyan-400 px-7 py-3.5 font-semibold text-slate-950"
           >
-            hello@shivamchandravanshi.com
+            shivam2026now@gmail.com
           </a>
         </section>
       </div>

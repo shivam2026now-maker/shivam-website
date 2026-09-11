@@ -59,7 +59,7 @@ export default async function ResearchDetailPage({
           href="/research"
           className="inline-flex text-sm text-slate-500 transition hover:text-cyan-300"
         >
-          ← Back to Research
+          ? Back to Research
         </Link>
 
         <header className="mt-12 border-b border-white/10 pb-9">
@@ -86,14 +86,14 @@ export default async function ResearchDetailPage({
 
             {research.status && (
               <>
-                <span>·</span>
+                <span>&#8226;</span>
                 <span>{research.status.replace("-", " ")}</span>
               </>
             )}
 
             {research.featured && (
               <>
-                <span>·</span>
+                <span>&#8226;</span>
                 <span className="text-cyan-500">Featured</span>
               </>
             )}

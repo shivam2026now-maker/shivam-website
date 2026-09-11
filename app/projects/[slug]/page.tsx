@@ -29,7 +29,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     <main className="min-h-screen bg-[#050816] text-white">
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-28">
         <Link href="/projects" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">
-          ← Projects
+          ? Projects
         </Link>
 
         <div className="mt-10 max-w-4xl">

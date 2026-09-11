@@ -16,7 +16,7 @@ export default async function JournalPage() {
   return (
     <main className="min-h-screen bg-[#050816] text-white">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
-        <Link href="/" className="text-sm text-cyan-400 transition hover:text-cyan-300">â† Back home</Link>
+        <Link href="/" className="text-sm text-cyan-400 transition hover:text-cyan-300">&#8592; Back home</Link>
 
         <header className="max-w-3xl pb-20 pt-20">
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">Field Journal</p>
@@ -40,7 +40,7 @@ export default async function JournalPage() {
                     <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{entry.title}</h2>
                     {entry.shortDescription && <p className="mt-5 text-base leading-7 text-slate-400">{entry.shortDescription}</p>}
                     {entry.tags?.length > 0 && <div className="mt-6 flex flex-wrap gap-2">{entry.tags.map((tag:string)=><span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-500">{tag}</span>)}</div>}
-                    <Link href={`/journal/${entry.slug?.current}`} className="mt-7 inline-flex text-sm text-cyan-300">Open entry â†’</Link>
+                    <Link href={`/journal/${entry.slug?.current}`} className="mt-7 inline-flex text-sm text-cyan-300">Open entry →</Link>
                   </div>
                 </div>
               </article>
@@ -51,9 +51,9 @@ export default async function JournalPage() {
         <div className="mt-10 border-t border-white/10 pt-12">
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">Index</p>
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
-            {[["/about","About"],["/articles","Articles"],["/research","Research"],["/projects","Projects"],["/journal","Journal"],["/media","Media"]].map(([href,label])=><Link key={href} href={href} className="text-sm text-slate-400 transition hover:text-white">â†’ {label}</Link>)}
+            {[["/about","About"],["/articles","Articles"],["/research","Research"],["/projects","Projects"],["/journal","Journal"],["/media","Media"]].map(([href,label])=><Link key={href} href={href} className="text-sm text-slate-400 transition hover:text-white">→ {label}</Link>)}
           </div>
-          <Link href="/" className="mt-8 inline-block text-xs uppercase tracking-[0.2em] text-slate-500 hover:text-cyan-300">Back to home â†‘</Link>
+          <Link href="/" className="mt-8 inline-block text-xs uppercase tracking-[0.2em] text-slate-500 hover:text-cyan-300">Back to home ↑</Link>
         </div>
       </div>
     </main>

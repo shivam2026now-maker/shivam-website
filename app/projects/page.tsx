@@ -1,4 +1,4 @@
-﻿export const revalidate = 60
+export const revalidate = 60
 
 import Link from "next/link"
 import {client} from "@/lib/sanity"
@@ -73,7 +73,7 @@ export default async function ProjectsPage(){
                       <span className="text-xs uppercase tracking-[0.25em] text-slate-500 transition group-hover:tracking-[0.32em] group-hover:text-cyan-300">
                         Explore project
                       </span>
-                      <span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">â†—</span>
+                      <span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">↗</span>
                     </div>
                   </div>
                 </Link>
@@ -84,10 +84,10 @@ export default async function ProjectsPage(){
 
         <div className="mt-16 flex items-center justify-between border-t border-white/10 pt-8">
           <Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">
-            Back to top â†‘
+            Back to top ↑
           </Link>
           <Link href="/" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">
-            Home â†’
+            Home →
           </Link>
         </div>
       </section>

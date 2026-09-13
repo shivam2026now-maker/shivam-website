@@ -1,0 +1,93 @@
+warning: in the working copy of 'app/projects/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/research/page.tsx', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/app/page.tsx b/app/page.tsx[m
+[1mindex ebe727ab..5bc5cb0a 100644[m
+[1m--- a/app/page.tsx[m
+[1m+++ b/app/page.tsx[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿export const revalidate = 60[m
+[32m+[m[32mexport const revalidate = 60[m
+ [m
+ import Link from "next/link"[m
+ import {client} from "@/lib/sanity"[m
+[36m@@ -64,7 +64,7 @@[m [mexport default async function HomePage(){[m
+             <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">[m
+               Curiosity[m
+               <br />[m
+[31m-              <span className="text-cyan-300">â†’ Investigation â†’ Building</span>[m
+[32m+[m[32m              <span className="text-cyan-300">→ Investigation → Building</span>[m
+             </h1>[m
+ [m
+             <p className="mt-8 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">[m
+[36m@@ -113,7 +113,7 @@[m [mexport default async function HomePage(){[m
+             </div>[m
+ [m
+             <Link href="/about" className="mt-9 inline-flex rounded-full border border-cyan-400/30 px-6 py-3 text-sm font-medium text-cyan-300 transition hover:bg-cyan-400/10">[m
+[31m-              More about me â†’[m
+[32m+[m[32m              More about me →[m
+             </Link>[m
+           </div>[m
+         </div>[m
+[36m@@ -175,7 +175,7 @@[m [mexport default async function HomePage(){[m
+ [m
+           <div className="mt-12">[m
+             <Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">[m
+[31m-              Back to top â†‘[m
+[32m+[m[32m              Back to top ↑[m
+             </Link>[m
+           </div>[m
+         </div>[m
+[36m@@ -194,7 +194,7 @@[m [mexport default async function HomePage(){[m
+ <footer className="border-t border-white/10">[m
+         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:px-8 md:flex-row md:items-center md:justify-between">[m
+           <span>Shivam.</span>[m
+[31m-          <span>Â© {new Date().getFullYear()} Shivam Chandravanshi</span>[m
+[32m+[m[32m          <span>© {new Date().getFullYear()} Shivam Chandravanshi</span>[m
+         </div>[m
+       </footer>[m
+     </main>[m
+[1mdiff --git a/app/projects/page.tsx b/app/projects/page.tsx[m
+[1mindex 671f2c48..2c865038 100644[m
+[1m--- a/app/projects/page.tsx[m
+[1m+++ b/app/projects/page.tsx[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿export const revalidate = 60[m
+[32m+[m[32mexport const revalidate = 60[m
+ [m
+ import Link from "next/link"[m
+ import {client} from "@/lib/sanity"[m
+[36m@@ -73,7 +73,7 @@[m [mexport default async function ProjectsPage(){[m
+                       <span className="text-xs uppercase tracking-[0.25em] text-slate-500 transition group-hover:tracking-[0.32em] group-hover:text-cyan-300">[m
+                         Explore project[m
+                       </span>[m
+[31m-                      <span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">â†—</span>[m
+[32m+[m[32m                      <span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">↗</span>[m
+                     </div>[m
+                   </div>[m
+                 </Link>[m
+[36m@@ -84,10 +84,10 @@[m [mexport default async function ProjectsPage(){[m
+ [m
+         <div className="mt-16 flex items-center justify-between border-t border-white/10 pt-8">[m
+           <Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">[m
+[31m-            Back to top â†‘[m
+[32m+[m[32m            Back to top ↑[m
+           </Link>[m
+           <Link href="/" className="text-xs uppercase tracking-[0.25em] text-slate-500 transition hover:text-cyan-300">[m
+[31m-            Home â†’[m
+[32m+[m[32m            Home →[m
+           </Link>[m
+         </div>[m
+       </section>[m
+[1mdiff --git a/app/research/page.tsx b/app/research/page.tsx[m
+[1mindex 08b6e2b0..2c380db0 100644[m
+[1m--- a/app/research/page.tsx[m
+[1m+++ b/app/research/page.tsx[m
+[36m@@ -9,6 +9,6 @@[m [mexport default async function ResearchPage(){[m
+  return <main className="min-h-screen bg-[#050816] text-white"><section className="mx-auto max-w-7xl px-6 pb-24 pt-28">[m
+   <div className="mb-16 max-w-3xl"><p className="mb-4 text-xs uppercase tracking-[0.35em] text-cyan-300">02 / Research</p><h1 className="text-5xl font-semibold tracking-tight md:text-7xl">Questions worth investigating.</h1><p className="mt-6 text-base leading-8 text-slate-400 md:text-lg">Research notes, investigations and ideas explored through physics, technology and interdisciplinary thinking.</p></div>[m
+   {items.length===0?<div className="glass-surface rounded-3xl p-10 text-slate-400">No research published yet.</div>:<div className="grid gap-8 md:grid-cols-2">{items.map((item:any,i:number)=>{const image=item.coverImage?urlFor(item.coverImage).width(1400).height(900).quality(85).url():null;return <Link key={item._id} href={`/research/${item.slug}`} className="premium-card image-depth shine group rounded-3xl"><div className="relative aspect-[16/10] overflow-hidden bg-slate-950">{image?<img src={image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/>:<div className="section-grid h-full w-full"/>}<div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent"/><div className="absolute left-6 top-6 text-xs uppercase tracking-[0.25em] text-slate-400">Research {String(i+1).padStart(2,"0")}</div>{item.status&&<div className="absolute right-6 top-6 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-300">{item.status}</div>}</div><div className="p-7 md:p-8"><h2 className="text-2xl font-semibold tracking-tight transition group-hover:text-cyan-200 md:text-3xl">{item.title}</h2>{item.shortDescription&&<p className="mt-4 line-clamp-3 text-sm leading-7 text-slate-400">{item.shortDescription}</p>}<div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5"><span className="text-xs uppercase tracking-[0.25em] text-slate-500 transition group-hover:text-cyan-300">Explore research</span><span className="text-xl text-cyan-300 transition duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">?</span></div></div></Link>})}</div>}[m
+[31m-  <div className="mt-16 border-t border-white/10 pt-8"><Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 hover:text-cyan-300">Back to top ?</Link></div>[m
+[32m+[m[32m  <div className="mt-16 border-t border-white/10 pt-8"><Link href="/#top" className="text-xs uppercase tracking-[0.25em] text-slate-500 hover:text-cyan-300">Back to top ↑</Link></div>[m
+  </section></main>[m
+ }[m
+\ No newline at end of file[m

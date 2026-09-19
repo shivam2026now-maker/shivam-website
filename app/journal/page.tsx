@@ -2,6 +2,8 @@ import Link from "next/link";
 import { client } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanityImage";
 
+export const revalidate = 0;
+
 const query = `*[_type == "journal" && !(_id in path("drafts.**"))] | order(publishedAt desc){
   _id,title,slug,shortDescription,coverImage,publishedAt,tags,featured
 }`;

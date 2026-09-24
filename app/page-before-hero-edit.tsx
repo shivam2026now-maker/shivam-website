@@ -458,7 +458,7 @@ export default function Home() {
               </div>
 
               <a
-                href="mailto:hello@shivamchandravanshi.com"
+                href="mailto:hello@shiwamchandravanshii@gmail.com"
                 className="inline-flex w-fit rounded-full bg-cyan-400 px-7 py-3.5 font-semibold text-slate-950 transition hover:bg-cyan-300"
               >
                 Get in touch →
@@ -471,7 +471,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-10 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} Shivam Chandravanshi</p>
+          <p>© {new Date().getFullYear()} Shiwam Chandravanshi</p>
           <p>Independent research · exploration · building</p>
         </div>
       </footer>

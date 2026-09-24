@@ -8,7 +8,7 @@ export default function AboutPage() {
           <div>
             <img
               src="/images/hero.jpg"
-              alt="Shivam Chandravanshi"
+              alt="Shiwam Chandravanshi"
               className="w-full rounded-3xl border border-white/10 object-cover"
             />
           </div>
@@ -19,7 +19,7 @@ export default function AboutPage() {
             </p>
 
             <h1 className="mt-5 text-5xl font-semibold tracking-tight sm:text-7xl">
-              Shivam Chandravanshi
+              Shiwam Chandravanshi
             </h1>
 
             <p className="mt-6 text-xl text-cyan-300">
@@ -57,10 +57,10 @@ export default function AboutPage() {
             Let&apos;s explore an idea.
           </h2>
           <a
-            href="mailto:shivam2026now@gmail.com"
+            href="mailto:shiwamchadnrvanshii@gmail.com"
             className="mt-8 inline-block rounded-full bg-cyan-400 px-7 py-3.5 font-semibold text-slate-950"
           >
-            shivam2026now@gmail.com
+            shiwamchadnrvanshii@gmail.com
           </a>
         </section>
       </div>

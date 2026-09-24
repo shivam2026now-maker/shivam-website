@@ -195,7 +195,7 @@ export default function Home() {
               </p>
 
               <p>
-                Hello, I'm Shivam Chandravanshi—an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems into smaller questions, looking for patterns and connections, and understanding the systems behind them. For me, learning is not just about finding answers—it is about questioning assumptions, experimenting with ideas, and turning curiosity into something I can explore, build, and share.
+                Hello, I'm Shiwam Chandravanshi—an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems into smaller questions, looking for patterns and connections, and understanding the systems behind them. For me, learning is not just about finding answers—it is about questioning assumptions, experimenting with ideas, and turning curiosity into something I can explore, build, and share.
               </p>
             </div>
           </div>

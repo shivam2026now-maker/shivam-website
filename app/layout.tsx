@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Shivam Chandravanshi | Aerospace & Research",
-    template: "%s | Shivam Chandravanshi",
+    default: "Shiwam Chandravanshi | Aerospace & Research",
+    template: "%s | Shiwam Chandravanshi",
   },
   description:
-    "Independent research, engineering, aerospace, space, technology, projects and ideas by Shivam Chandravanshi.",
+    "Independent research, engineering, aerospace, space, technology, projects and ideas by Shiwam Chandravanshi.",
   keywords: [
-    "Shivam Chandravanshi",
+    "Shiwam Chandravanshi",
     "Aerospace",
     "Research",
     "Engineering",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Shivam Chandravanshi",
+      name: "Shiwam Chandravanshi",
     },
   ],
 };

@@ -52,7 +52,7 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'string',
-      initialValue: 'Shivam Chandrawanshi',
+      initialValue: 'Shiwam Chandravanshi',
     }),
 
     defineField({

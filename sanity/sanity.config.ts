@@ -6,7 +6,7 @@ import {structure} from './structure'
 
 export default defineConfig({
   name: 'shivam-website-studio',
-  title: 'Shivam Website Studio',
+  title: 'Shiwam Chandravanshi — Website Studio',
   projectId: '2mcdfmo7',
   dataset: 'production',
 

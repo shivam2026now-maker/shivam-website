@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  verification: { google: 'mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo' },
   verification: {
     google: "mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo",
   },

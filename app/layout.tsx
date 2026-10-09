@@ -12,7 +12,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const productionDomain =
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ??
+  process.env.VERCEL_URL ??
+  "shiwamchandravanshii.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${productionDomain}`),
   verification: {
     google: "mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo",
   },
@@ -37,6 +43,20 @@ export const metadata: Metadata = {
       name: "Shiwam Chandravanshi",
     },
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Shiwam Chandravanshi",
+    title: "Shiwam Chandravanshi | Aerospace & Research",
+    description:
+      "Independent research, engineering, aerospace, space, technology, projects and ideas by Shiwam Chandravanshi.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shiwam Chandravanshi | Aerospace & Research",
+    description:
+      "Independent research, engineering, aerospace, space, technology, projects and ideas by Shiwam Chandravanshi.",
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +69,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body><header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050816]/75 backdrop-blur-xl"><div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6"><a href="/" className="text-sm font-semibold uppercase tracking-[0.28em] text-white transition hover:text-cyan-300">Shivam</a><nav className="hidden items-center gap-7 md:flex">{["Articles","Research","Projects","Journal","Media"].map(item=><a key={item} href={"/"+item.toLowerCase()} className="text-[11px] uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-300">{item}</a>)}</nav><a href="/about" className="text-[11px] uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-300">About</a></div></header>{children}</body>
+      <body><header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050816]/75 backdrop-blur-xl"><div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6"><a href="/" className="text-sm font-semibold uppercase tracking-[0.28em] text-white transition hover:text-cyan-300">Shiwam</a><nav className="hidden items-center gap-7 md:flex">{["Articles","Research","Projects","Journal","Media"].map(item=><a key={item} href={"/"+item.toLowerCase()} className="text-[11px] uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-300">{item}</a>)}</nav><a href="/about" className="text-[11px] uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-300">About</a></div></header>{children}</body>
     </html>
   );
 }

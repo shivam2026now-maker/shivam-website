@@ -225,7 +225,7 @@ export async function generateMetadata({
     article.seoDescription ||
     article.excerpt ||
     `Read ${article.title} by ${
-      article.author || 'Shivam Chandrawanshi'
+      article.author || 'Shiwam Chandravanshi'
     }.`
 
   const coverImage = article.coverImage?.asset
@@ -282,7 +282,7 @@ export default async function ArticlePage({
       '',
     author: {
       '@type': 'Person',
-      name: article.author || 'Shivam Chandrawanshi',
+      name: article.author || 'Shiwam Chandravanshi',
     },
     datePublished: article.publishedAt,
     image: article.coverImage?.asset

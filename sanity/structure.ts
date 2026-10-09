@@ -2,7 +2,7 @@
 
 export const structure = (S: StructureBuilder) =>
   S.list()
-    .title('Shivam Website')
+    .title('Shiwam Chandravanshi')
     .items([
       // --------------------------------------------
       // ARTICLES

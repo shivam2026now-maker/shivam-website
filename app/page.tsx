@@ -28,7 +28,7 @@ export default async function HomePage(){
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050816]/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
           <Link href="/" className="text-lg font-semibold tracking-tight">
-            Shivam<span className="text-cyan-400">.</span>
+            Shiwam<span className="text-cyan-400">.</span>
           </Link>
 
           <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
@@ -91,7 +91,7 @@ export default async function HomePage(){
       <section id="about" className="mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:py-32">
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div className="image-depth overflow-hidden rounded-3xl border border-white/10">
-            <img src="/images/hero.jpg" alt="Shivam Chandravanshi" className="aspect-[4/5] w-full object-cover" />
+            <img src="/images/hero.jpg" alt="Shiwam Chandravanshi" className="aspect-[4/5] w-full object-cover" />
           </div>
 
           <div>
@@ -105,7 +105,7 @@ export default async function HomePage(){
                 Fascinated by the sky, drawn to the unseen, and rarely satisfied with simply accepting things as they are&mdash;I have always been curious about the why and how behind what we experience.
               </p>
               <p>
-                Hello, I&apos;m Shivam Chandravanshi&mdash;an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems down, learning across fields, and turning curiosity into things I can build, test, and understand.
+                Hello, I&apos;m Shiwam Chandravanshi&mdash;an independent learner and aspiring aerospace entrepreneur. I explore ideas through physics, space, data and interdisciplinary thinking, often following a question wherever it leads. I enjoy breaking complex problems down, learning across fields, and turning curiosity into things I can build, test, and understand.
               </p>
               <p>
                 This website is a collection of that journey&mdash;my projects, experiments, articles, ideas, and the questions I&apos;m currently exploring.
@@ -193,8 +193,8 @@ export default async function HomePage(){
         </section>
 <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:px-8 md:flex-row md:items-center md:justify-between">
-          <span>Shivam.</span>
-          <span>© {new Date().getFullYear()} Shivam Chandravanshi</span>
+          <span>Shiwam.</span>
+          <span>© {new Date().getFullYear()} Shiwam Chandravanshi</span>
         </div>
       </footer>
     </main>

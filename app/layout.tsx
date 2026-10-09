@@ -13,6 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  verification: { google: 'mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo' },
+  verification: {
+    google: "mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo",
+  },
   title: {
     default: "Shiwam Chandravanshi | Aerospace & Research",
     template: "%s | Shiwam Chandravanshi",
@@ -50,3 +54,4 @@ export default function RootLayout({
     </html>
   );
 }
+

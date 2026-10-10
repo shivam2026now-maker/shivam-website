@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(`https://${productionDomain}`),
   verification: {
     google: "mwVA-jgjFYnVQfJbWoqbhYKSvIQN0KMJ-QW4CwN4Lbo",
+    other: {
+      "msvalidate.01": "A69373D05C083CD8CCAA7897E4CA05B3",
+    },
   },
   title: {
     default: "Shiwam Chandravanshi | Aerospace & Research",

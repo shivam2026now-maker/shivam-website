@@ -15,8 +15,25 @@ type PublishedRoute = {
 };
 
 const staticRoutes: MetadataRoute.Sitemap = [
-  { url: siteUrl, changeFrequency: "weekly", priority: 1 },
-  { url: `${siteUrl}/about`, changeFrequency: "monthly", priority: 0.8 },
+  {
+    url: siteUrl,
+    changeFrequency: "weekly",
+    priority: 1,
+    images: [`${siteUrl}/images/hero.jpg`],
+  },
+  {
+    url: `${siteUrl}/about`,
+    changeFrequency: "weekly",
+    priority: 0.9,
+    images: [
+      `${siteUrl}/images/hero.jpg`,
+      encodeURI(`${siteUrl}/images/shiwam chandravanshi.jpg`),
+      encodeURI(`${siteUrl}/images/shivam picture.jpg`),
+      encodeURI(`${siteUrl}/images/shiwam.jpg`),
+      encodeURI(`${siteUrl}/images/shiwam shiwam.jpg`),
+      encodeURI(`${siteUrl}/images/shivam chandravanshi shiwam picture.jpg`),
+    ],
+  },
   { url: `${siteUrl}/articles`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${siteUrl}/research`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${siteUrl}/projects`, changeFrequency: "weekly", priority: 0.8 },

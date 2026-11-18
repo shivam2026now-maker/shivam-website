@@ -19,7 +19,7 @@ export default function NonPropellerDronePage() {
 
           <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.025] p-8 sm:p-12">
             <p className="text-slate-400">
-              Project details and sketches will be added here.
+              Project details and sketches are here.
             </p>
           </div>
         </div>
